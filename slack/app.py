@@ -5,7 +5,8 @@ from slack_bolt.adapter.flask import SlackRequestHandler
 from slack_bolt import App
 from dotenv import find_dotenv, load_dotenv
 from flask import Flask, request
-#from functions import draft_email
+from functions import draft_email
+from Alpha import get_daily_motivation_quote
 
 # Load environment variables from .env file
 load_dotenv(find_dotenv())
@@ -22,6 +23,7 @@ app = App(token=SLACK_BOT_TOKEN)
 # Flask is a web application framework written in Python
 flask_app = Flask(__name__)
 handler = SlackRequestHandler(app)
+
 
 
 def get_bot_user_id():
@@ -70,8 +72,9 @@ def handle_mentions(body, say):
     text = text.replace(mention, "").strip()
 
     say("Sure, I'll get right on that!")
-    # response = my_function(text)
-    response = draft_email(text)
+    #response = my_function(text)
+    #response = draft_email(text)
+    response = get_daily_motivation_quote(text)
     say(response)
 
 
@@ -90,3 +93,11 @@ def slack_events():
 # Run the Flask app
 if __name__ == "__main__":
     flask_app.run()
+
+
+
+
+
+
+
+ 
