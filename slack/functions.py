@@ -9,7 +9,7 @@ from langchain.prompts.chat import (
 load_dotenv(find_dotenv())
 
 
-OPENAI_API_KEY = "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"
+OPENAI_API_KEY = ""
 
 def draft_email(user_input, name="Namdeo"):
     chat = ChatOpenAI(openai_api_key = OPENAI_API_KEY, temperature=1)
