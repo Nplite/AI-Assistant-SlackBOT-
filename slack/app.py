@@ -7,6 +7,7 @@ from dotenv import find_dotenv, load_dotenv
 from flask import Flask, request
 from functions import draft_email
 from Alpha import get_daily_motivation_quote
+from Bita import get_daily_productivity_quote
 
 # Load environment variables from .env file
 load_dotenv(find_dotenv())
@@ -56,6 +57,7 @@ def my_function(text):
     return response
 
 
+
 @app.event("app_mention")
 def handle_mentions(body, say):
     """
@@ -75,6 +77,7 @@ def handle_mentions(body, say):
     #response = my_function(text)
     #response = draft_email(text)
     response = get_daily_motivation_quote(text)
+    #response = get_daily_productivity_quote(text)
     say(response)
 
 
@@ -101,3 +104,4 @@ if __name__ == "__main__":
 
 
  
+
